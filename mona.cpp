@@ -15,8 +15,8 @@ mona::~mona()
     delete ui;
 }
 
-double add(double a,double b,double c,double d,double e){
-   return (a*b)*(1+c)*(1+d)*(2+e);
+double add(double a,double b,double c,double d,double e,double f){
+   return (a*b)*(1+c)*(1+d)*2*(1+e)*f;
 }
 
 void mona::caldmg(){
@@ -42,9 +42,21 @@ void mona::caldmg(){
     QString jingtong=ui->jingtong->text();
     double fanyingyuqi=jingtong.toDouble()/100;
 
-    double sum=add(gongjili,beilv,baojiyuqi,jiashangyuqi,fanyingyuqi)*0.9;
-    double kangxing=add(gongjili,beilv,add4,jiashangyuqi,fanyingyuqi)*0.9;
-    double wubaoji=add(gongjili,beilv,0,jiashangyuqi,fanyingyuqi)*0.9;
+    QString renwu=ui->renwudengji->text();
+    QString guaiwu=ui->guaiwudengji->text();
+    int renwulv=renwu.toInt();
+    int guaiwulv=guaiwu.toInt();
+
+    double mianshang;
+    if(renwulv!=guaiwulv){
+        mianshang=0.45-(guaiwulv-renwulv)*0.0016;
+    }else {
+        mianshang=0.45;
+    }
+
+    double sum=add(gongjili,beilv,baojiyuqi,jiashangyuqi,fanyingyuqi,mianshang);
+    double kangxing=add(gongjili,beilv,add4,jiashangyuqi,fanyingyuqi,mianshang);
+    double wubaoji=add(gongjili,beilv,0,jiashangyuqi,fanyingyuqi,mianshang);
 
     ui->textBrowser->setText(QString::number((int)sum));
     ui->textBrowser_2->setText(QString::number((int)kangxing));

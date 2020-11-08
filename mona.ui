@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>441</height>
+    <width>729</width>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>60</y>
       <width>131</width>
       <height>41</height>
@@ -44,7 +44,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>20</y>
       <width>131</width>
       <height>31</height>
@@ -77,7 +77,7 @@
    <widget class="QTextBrowser" name="textBrowser_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>170</y>
       <width>131</width>
       <height>41</height>
@@ -87,7 +87,7 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>130</y>
       <width>131</width>
       <height>31</height>
@@ -107,7 +107,7 @@
    <widget class="QTextBrowser" name="textBrowser_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>270</y>
       <width>131</width>
       <height>41</height>
@@ -117,7 +117,7 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>530</x>
       <y>230</y>
       <width>131</width>
       <height>31</height>
@@ -137,7 +137,7 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>550</x>
       <y>340</y>
       <width>91</width>
       <height>21</height>
@@ -246,13 +246,45 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>80</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>莫娜等级</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="renwudengji"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>怪物等级</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="guaiwudengji"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>527</width>
+     <width>729</width>
      <height>26</height>
     </rect>
    </property>
