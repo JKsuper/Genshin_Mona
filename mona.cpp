@@ -40,7 +40,7 @@ void mona::caldmg(){
     double jiashangyuqi=add5+add6+add7;
 
     QString jingtong=ui->jingtong->text();
-    double fanyingyuqi=jingtong.toDouble()/100;
+    double fanyingyuqi=(6.665-9340/(jingtong.toDouble()+1401))/2.4;
 
     QString renwu=ui->renwudengji->text();
     QString guaiwu=ui->guaiwudengji->text();
@@ -49,7 +49,7 @@ void mona::caldmg(){
 
     double mianshang;
     if(renwulv!=guaiwulv){
-        mianshang=0.45-(guaiwulv-renwulv)*0.0016;
+        mianshang=0.45-(guaiwulv-renwulv)*0.0015;
     }else {
         mianshang=0.45;
     }
