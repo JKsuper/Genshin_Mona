@@ -7,7 +7,14 @@ mona::mona(QWidget *parent) :
     ui(new Ui::mona)
 {
     ui->setupUi(this);
+    ui->bannite->setEnabled(false);
+    ui->bannitejiashang->setEnabled(false);
+    ui->jiankang->setEnabled(false);
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(caldmg()));
+    connect(ui->checkBox,SIGNAL(clicked(bool)),ui->bannite,SLOT(setEnable(bool)));
+    connect(ui->checkBox,SIGNAL(clicked(bool)),ui->bannitejiashang,SLOT(setEnable(bool)));
+    connect(ui->checkBox_2,SIGNAL(clicked(bool)),ui->jiankang,SLOT(setEnabled(bool)));
+
 }
 
 mona::~mona()
@@ -24,6 +31,16 @@ void mona::caldmg(){
     int gongjili=atk.toInt();
     QString jineng = ui->jineng->text();
     double beilv=jineng.toDouble()/100;
+
+    QString bannite=ui->bannite->text();
+    int banniteatk=bannite.toInt();
+    QString bannitejiashang=ui->bannitejiashang->text();
+    double bannitebuff=bannitejiashang.toDouble()/100;
+
+    if(ui->checkBox->isChecked()==true){
+        double ewaigongji=banniteatk*bannitebuff;
+        gongjili=gongjili+static_cast<int>(ewaigongji);
+    }
 
     QString baojilv=ui->baoji->text();
     double add3=baojilv.toDouble()/100;
@@ -58,7 +75,22 @@ void mona::caldmg(){
     double kangxing=add(gongjili,beilv,add4,jiashangyuqi,fanyingyuqi,mianshang);
     double wubaoji=add(gongjili,beilv,0,jiashangyuqi,fanyingyuqi,mianshang);
 
-    ui->textBrowser->setText(QString::number((int)sum));
-    ui->textBrowser_2->setText(QString::number((int)kangxing));
-    ui->textBrowser_3->setText(QString::number((int)wubaoji));
+
+    if(ui->checkBox_2->isChecked()==true){
+        double kangxingjiacheng = 0.0;
+        QString jiankang=ui->jiankang->text();
+        double jiankangbili=jiankang.toDouble()/100;
+        if(jiankangbili<=0.1){
+            kangxingjiacheng=(jiankangbili/(1-0.1))+1;
+        }else if(jiankangbili>0.1){
+            kangxingjiacheng=((0.1+jiankangbili)/2*(1-0.1))+1;
+        }
+        sum=sum*kangxingjiacheng;
+        kangxing=kangxing*kangxingjiacheng;
+        wubaoji=wubaoji*kangxingjiacheng;
+    }
+
+    ui->textBrowser->setText(QString::number(static_cast<int>(sum)));
+    ui->textBrowser_2->setText(QString::number(static_cast<int>(kangxing)));
+    ui->textBrowser_3->setText(QString::number(static_cast<int>(wubaoji)));
 }
